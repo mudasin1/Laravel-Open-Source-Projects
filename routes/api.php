@@ -13,6 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
+    Route::get('/health', function () {
+        return response()->json(['status' => 'ok']);
+    });
+
+    Route::resource('projects', 'ProjectController', [
+        'as' => 'api.v1',
+        'except' => ['create', 'edit'],
+    ]);
 });

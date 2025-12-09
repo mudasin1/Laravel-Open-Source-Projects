@@ -5,6 +5,29 @@
 - Laravel Packages/Projects[P]
 - Tutorial Projects [T]
 
+[Quickstart](#quickstart) | [API](#api) | [Architecture](#architecture)
+
+## Quickstart
+1. `cp .env.example .env` and set `APP_KEY`, `APP_URL`, and your preferred database. For quick demos set `DB_CONNECTION=sqlite` and `DB_DATABASE=/absolute/path/database.sqlite`.
+2. `composer install`
+3. `php artisan migrate --seed` to create and load the curated catalog.
+4. `php artisan serve` and hit `http://localhost:8000/api/v1/projects`.
+
+## API
+- `GET /api/v1/projects` — List projects with filters `catalog_letter`, `project_type`, `featured`, `search`, and `per_page`.
+- `GET /api/v1/projects/{slug}` — Fetch a single project using slug-based route model binding.
+- `POST /api/v1/projects` — Create a project (validated payloads). Slugs are generated automatically when omitted.
+- `PUT /api/v1/projects/{slug}` — Update a project.
+- `DELETE /api/v1/projects/{slug}` — Delete a project.
+- `GET /api/v1/health` — Lightweight readiness probe.
+
+## Architecture
+- Domain layer under `app/Domain/Projects` with Eloquent models and repository interface + implementation (`EloquentProjectRepository`).
+- `App\Services\ProjectService` adds caching, encapsulates mutations, and flushes cached listings on change.
+- API controllers live in `app/Http/Controllers/Api`, with validation handled by form request classes in `app/Http/Requests`.
+- Seed data lives in `database/seeds/ProjectSeeder.php`; migrations create a normalized `projects` table.
+- Feature coverage via `tests/Feature/ProjectApiTest.php` (uses in-memory sqlite for isolated runs).
+
 [A](#A) | [B](#B) | [C](#C) | [D](#D) | [E](#E) | [F](#F) | [G](#G) | [H](#H) | [I](#I) | [J](#J) | [K](#K) | [L](#L) | [M](#M) | [N](#N) | [O](#O) | [P](#P) | [Q](#Q) | [R](#R) | [S](#S) | [T](#T) | [U](#U) | [V](#V) | [W](#W) | [X](#X) | [Y](#Y) | [Z](#Z)
 
 ## <a name="A"> </a>A
