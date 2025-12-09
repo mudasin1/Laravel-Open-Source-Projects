@@ -23,7 +23,7 @@ graph TD;
 This document explains the <SwmToken path="app/Http/Controllers/Auth/ForgotPasswordController.php" pos="8:2:2" line-data="class ForgotPasswordController extends Controller">`ForgotPasswordController`</SwmToken> class. We will cover:
 
 1. What is <SwmToken path="app/Http/Controllers/Auth/ForgotPasswordController.php" pos="8:2:2" line-data="class ForgotPasswordController extends Controller">`ForgotPasswordController`</SwmToken>
-2. Variables and functions in <SwmToken path="app/Http/Controllers/Auth/ForgotPasswordController.php" pos="8:2:2" line-data="class ForgotPasswordController extends Controller">`ForgotPasswordController`</SwmToken>
+2. Variables and functions
 
 # What is <SwmToken path="app/Http/Controllers/Auth/ForgotPasswordController.php" pos="8:2:2" line-data="class ForgotPasswordController extends Controller">`ForgotPasswordController`</SwmToken>
 
@@ -33,7 +33,7 @@ The <SwmToken path="app/Http/Controllers/Auth/ForgotPasswordController.php" pos=
 
 ---
 
-The constructor function <SwmToken path="app/Http/Controllers/Auth/ForgotPasswordController.php" pos="28:5:5" line-data="    public function __construct()">`__construct`</SwmToken> initializes the <SwmToken path="app/Http/Controllers/Auth/ForgotPasswordController.php" pos="8:2:2" line-data="class ForgotPasswordController extends Controller">`ForgotPasswordController`</SwmToken> instance. It applies the 'guest' middleware to ensure that only unauthenticated users can access the password reset functionality.
+The constructor function <SwmToken path="app/Http/Controllers/Auth/ForgotPasswordController.php" pos="28:5:5" line-data="    public function __construct()">`__construct`</SwmToken> initializes the controller instance. It applies the 'guest' middleware to ensure that only unauthenticated users can access the password reset functionality.
 
 ```hack
     public function __construct()
@@ -50,7 +50,7 @@ The constructor function <SwmToken path="app/Http/Controllers/Auth/ForgotPasswor
 
 ---
 
-The class uses the <SwmToken path="app/Http/Controllers/Auth/ForgotPasswordController.php" pos="21:3:3" line-data="    use SendsPasswordResetEmails;">`SendsPasswordResetEmails`</SwmToken> trait, which provides the core functionality for sending password reset emails. This trait includes methods that handle the process of validating the email, generating the reset token, and sending the notification to the user.
+The class uses the trait <SwmToken path="app/Http/Controllers/Auth/ForgotPasswordController.php" pos="21:3:3" line-data="    use SendsPasswordResetEmails;">`SendsPasswordResetEmails`</SwmToken> which provides the core functionality for sending password reset emails. This trait includes methods that handle the process of validating the email, sending the reset link, and responding to the user.
 
 ```hack
     use SendsPasswordResetEmails;
